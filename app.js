@@ -1,16 +1,24 @@
-alert("Boas vindas ao jogo do número secreto!");
+let numeroSecreto = parseInt(Math.random() * 11);
+let tentativas = 1;
+let chute;
 
-let numSecret = 5;
+alert("Boas vindas ao jogo do número secreto");
 
-let chute = prompt("escolha um número entre 1 e 10");
-// se chute for igual ao número secreto
-if (numSecret == chute) {
-  alert(`isso aí! Você descobriu o número secreto, que é \n ${numSecret}`);
-} else {
-  if (numSecret < chute) {
-    alert(`O número secreto é menor que ${chute}`);
+while (chute != numeroSecreto) {
+  let chute = prompt("Escolha um número entre 1 e 10");
+  if (chute == numeroSecreto) {
+    break;
   } else {
-    alert(`o número secreto é maior que ${chute}`);
+    if (chute > numeroSecreto) {
+      alert("O número secreto é menor");
+    } else {
+      alert("O número secreto é maior");
+    }
   }
+  tentativas++;
 }
-// acoplamento, template strings em javascript
+
+let palavraTentativa = tentativas > 1 ? "tentativas" : "tentativa";
+alert(
+  `O número secreto era ${numeroSecreto}\ne você acertou com apenas ${tentativas} ${palavraTentativa}`
+);
